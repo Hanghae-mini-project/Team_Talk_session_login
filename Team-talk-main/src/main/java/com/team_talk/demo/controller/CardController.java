@@ -23,25 +23,26 @@ public class CardController {
 //    }
 //
 
-    @PostMapping("/api/cards/{pinId}")
+    @PostMapping("/api/cards")
     public void createCard(
             @RequestBody CardRequestDto requestDto,
-            @PathVariable Long pinId
+            @RequestParam(required = false, value = "pinId") Long pinId
     ) {
         cardService.create(requestDto, pinId);
     }
 
-    @PutMapping("/api/cards/{cardId}")
+    @PutMapping("/api/cards")
     public void updateCard(
-            @PathVariable Long cardId,
+            @RequestParam(required = false, value = "cardId") Long cardId,
             @RequestBody CardRequestDto requestDto
     ) {
         cardService.update(requestDto, cardId);
     }
 
-    @DeleteMapping("/api/cards/{cardId}")
-    public void deleteCard(@PathVariable Long cardId) {
+    @DeleteMapping("/api/cards")
+    public void deleteCard(@RequestParam(required = false, value = "cardId") Long cardId) {
         cardRepository.deleteById(cardId);
     }
+
 
 }

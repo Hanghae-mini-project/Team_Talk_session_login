@@ -33,4 +33,9 @@ public class CommentService {
     public Comment findById(Long id) {
         return commentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException());
     }
+
+    public void update(CommentRequestDto requestDto, Long commentId){
+        Comment comment= commentRepository.findById(commentId).orElseThrow(()->new IllegalArgumentException("내용이 존재하지 않습니다."));
+        comment.update(requestDto);
+    }
 }

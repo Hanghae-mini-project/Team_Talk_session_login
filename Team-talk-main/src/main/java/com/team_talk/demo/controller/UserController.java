@@ -44,11 +44,9 @@ public class UserController {
         userService.registerUser(requestDto);
 //
     }
-
     @GetMapping("/user/forbidden")
     public String forbidden() {
         return "forbidden";
 
     }
-
 }

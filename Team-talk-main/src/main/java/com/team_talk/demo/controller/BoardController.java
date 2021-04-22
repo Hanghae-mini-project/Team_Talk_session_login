@@ -37,7 +37,6 @@ public class BoardController {
         return boards;
     }
 
-
     @PostMapping("/api/invite")
     public void createBoard(
             @RequestParam(required = false, value = "username") String username,
@@ -60,20 +59,18 @@ public class BoardController {
         boardService.create(requestDto, user);
     }
 
-    @PutMapping("/api/boards/{boardId}")
+    @PutMapping("/api/boards")
     public void updateBoard(
-            @PathVariable Long boardId,
+            @RequestParam(required = false, value = "boardId") Long boardId,
             @RequestBody BoardRequestDto requestDto
     ) {
 
         boardService.update(requestDto, boardId);
     }
 
-    @DeleteMapping("/api/boards/{boardId}")
-    public void deleteBoard(@PathVariable Long boardId) {
+    @DeleteMapping("/api/boards/")
+    public void deleteBoard(@RequestParam(required = false, value = "boardId") Long boardId) {
         boardRepository.deleteById(boardId);
     }
-
-
 
 }

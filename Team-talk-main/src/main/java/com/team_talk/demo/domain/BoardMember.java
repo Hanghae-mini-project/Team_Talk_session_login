@@ -19,8 +19,6 @@ public class BoardMember extends Timestamped {
     @Column(nullable=false)
     private String username;
 
-
-
     @ManyToOne
     private Board board;
 

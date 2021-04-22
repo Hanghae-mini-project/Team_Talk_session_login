@@ -29,16 +29,14 @@ public class Board extends Timestamped {
     @JsonManagedReference
     private List<Pin> pins = new ArrayList<Pin>();
 
-
+// 단방향으로 사용가능하나 멤버의 정보들을 사용할 때 이용할 예정
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "board", cascade = CascadeType.REMOVE)
 //    @JsonManagedReference
 //    private List<BoardMember> boardMembers = new ArrayList<BoardMember>();
 
-
     @ManyToOne
     @JsonBackReference
     private User user;
-
 
     public Board(BoardRequestDto requestDto, User user) {
         this.title = requestDto.getTitle();
@@ -48,17 +46,6 @@ public class Board extends Timestamped {
     public void update(BoardRequestDto requestDto) {
         this.title = requestDto.getTitle();
     }
-
-
-//    public void addPin(Pin pin)
-//    {
-//        this.pins.add(pin);
-//        if(pin.getBoard()!=this){
-//            pin.setBoard(this);
-//        }
-
-
-//    }
 
 
 }
